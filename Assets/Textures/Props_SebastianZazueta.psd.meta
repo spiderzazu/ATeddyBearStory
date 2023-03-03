@@ -1,0 +1,1026 @@
+fileFormatVersion: 2
+guid: 350225987e569aa4c81785ec34236bf9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1681
+        width: 336
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 351bbc134fb00e34aaee5dbbe4b71541
+      internalID: -357171929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_1
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 1678
+        width: 308
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef472b27fdd2ce42ace1a146e7c0598
+      internalID: -1575789327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1538
+        width: 79
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d44ad80b343f1f549bee5204a997b014
+      internalID: 1589936837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_3
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 1536
+        width: 37
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d881631014a64de45a847551ee56a033
+      internalID: 1470861799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_4
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 1536
+        width: 59
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab98040576bd59647b943c4d4f5d5343
+      internalID: 984635418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_5
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 1612
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2808ce8c4f8793845965b398f810f666
+      internalID: 345620520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_6
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1536
+        width: 53
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adac64a72efe16342846683427c9e204
+      internalID: -32480392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_7
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 1538
+        width: 90
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e1ab6bb71cdb7488be98ebcef217f5
+      internalID: 1274488611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_8
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 1536
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90b44f5cb4190a747ac317cf251d0edb
+      internalID: -2015508001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_9
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1538
+        width: 53
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bc39a1d9c84f941be6462c41eb4352
+      internalID: -1601299641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_10
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 1536
+        width: 62
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c075e80cd3c22841ae8b740f294afad
+      internalID: 1318865184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_11
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 1536
+        width: 55
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b460984d5552ee540978e4d2391bf7d8
+      internalID: 679833929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_12
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 1536
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e828905d81d5b4aba6d13e84a2a5fb
+      internalID: 431606874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_13
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1538
+        width: 53
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11fbaf77d5df6b4f9878830fb58e7ec
+      internalID: -1940513456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_14
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1536
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b8eb3208288cc4ea6359010052eab2
+      internalID: -1977915242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_15
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 1538
+        width: 33
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bfdde7e3e990c146a5189ccb9b8ce11
+      internalID: 1216548487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_16
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1508
+        width: 59
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d6d433b5090bd4eba352dd81a8caae
+      internalID: 2063162880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_17
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1538
+        width: 11
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79eca977c5a60d242a039347f2a22331
+      internalID: 2071260090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_18
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 1536
+        width: 51
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e313185af125adb44bc10be6ce1bbd94
+      internalID: -976015631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_19
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 889
+        width: 665
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b794f47903e1d8b46adb9aa446de9877
+      internalID: 510252741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_20
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 908
+        width: 649
+        height: 505
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b568693332e9bfa49b237f54e236003a
+      internalID: 505444255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_21
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 742
+        width: 79
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23243079e26fd5e4f8397e263dae1b83
+      internalID: 441667916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_22
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 740
+        width: 37
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6d8a087b66a85439625e05efea592f
+      internalID: 1656000139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_23
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 740
+        width: 59
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d33ad2971858f949902b8426b10da73
+      internalID: -410204567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_24
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 820
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b27eb7f3fd37314eab6bb6be49f24b9
+      internalID: -1690193474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_25
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 740
+        width: 59
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 738c6884e900df24997a7ea0322b550e
+      internalID: -951756789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_26
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 740
+        width: 53
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c49a289233a1b4cb881fb7781a9201
+      internalID: 936976213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_27
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 742
+        width: 90
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f582ade32c9948b40b48b8a324c2738d
+      internalID: -812178613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_28
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 740
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5417196cf766748880e5be29fe740f
+      internalID: -1956793298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_29
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 742
+        width: 53
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c76f8ec934998e43b18ab95c4b8f0c1
+      internalID: -845407453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_30
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 740
+        width: 62
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f4ab643e2ecfd408848e231c158373
+      internalID: -1681597670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_31
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 740
+        width: 55
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d47743071aae042ace91495a949984
+      internalID: -482250277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_32
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 742
+        width: 60
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6ef3b8c953fde4e8c1ca7f8552b297
+      internalID: 1989373966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_33
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 742
+        width: 11
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0a8ac7ebae5f645ba803ffa00583ce
+      internalID: 1987596704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_34
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 740
+        width: 51
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce7a437f7c587f4181fbc2e65df6199
+      internalID: 33872839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_35
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 75
+        width: 506
+        height: 567
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b91f358115cc441808733c14ce3015
+      internalID: 1585174795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_36
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 17
+        width: 56
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c114ea2f2afb9c4ab138e0410ca18d2
+      internalID: 68476737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_37
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 10
+        width: 580
+        height: 731
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b80a86946a7d64882d8f9ec8d4cee5
+      internalID: 6566824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_38
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 15
+        width: 144
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7f59167f5f9f2499bc8dc13e650c75
+      internalID: 716258499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_39
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 17
+        width: 63
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5220449c245b88546aee158d06ff46f0
+      internalID: 700064141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_SebastianZazueta_40
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 12
+        width: 61
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d73560bb90eb54e8a504900f5718c2
+      internalID: -1743626583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5a981f15e5fa05a42902a2273deea4d5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Props_SebastianZazueta_0: -357171929
+      Props_SebastianZazueta_41: 1994139737
+      Props_SebastianZazueta_23: -410204567
+      Props_SebastianZazueta_15: 1216548487
+      Props_SebastianZazueta_28: -1956793298
+      Props_SebastianZazueta_17: 2071260090
+      Props_SebastianZazueta_22: 1656000139
+      Props_SebastianZazueta_27: -812178613
+      Props_SebastianZazueta_34: 33872839
+      Props_SebastianZazueta_10: 1318865184
+      Props_SebastianZazueta_29: -845407453
+      Props_SebastianZazueta_30: -1681597670
+      Props_SebastianZazueta_36: 68476737
+      Props_SebastianZazueta_18: -976015631
+      Props_SebastianZazueta_14: -1977915242
+      Props_SebastianZazueta_9: -1601299641
+      Props_SebastianZazueta_33: 1987596704
+      Props_SebastianZazueta_12: 431606874
+      Props_SebastianZazueta_35: 1585174795
+      Props_SebastianZazueta_8: -2015508001
+      Props_SebastianZazueta_39: 700064141
+      Props_SebastianZazueta_16: 2063162880
+      Props_SebastianZazueta_5: 345620520
+      Props_SebastianZazueta_6: -32480392
+      Props_SebastianZazueta_26: 936976213
+      Props_SebastianZazueta_37: 6566824
+      Props_SebastianZazueta_13: -1940513456
+      Props_SebastianZazueta_20: 505444255
+      Props_SebastianZazueta_40: -1743626583
+      Props_SebastianZazueta_31: -482250277
+      Props_SebastianZazueta_25: -951756789
+      Props_SebastianZazueta_1: -1575789327
+      Props_SebastianZazueta_2: 1589936837
+      Props_SebastianZazueta_4: 984635418
+      Props_SebastianZazueta_19: 510252741
+      Props_SebastianZazueta_21: 441667916
+      Props_SebastianZazueta_24: -1690193474
+      Props_SebastianZazueta_32: 1989373966
+      Props_SebastianZazueta_3: 1470861799
+      Props_SebastianZazueta_7: 1274488611
+      Props_SebastianZazueta_38: 716258499
+      Props_SebastianZazueta_11: 679833929
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
