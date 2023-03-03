@@ -6,10 +6,16 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed = 1, jumpTime, maxJump = 1;
+    public float sphereDetection;
+    public LayerMask groundLayer;
     private float moveInput, jumpTimeCounter, distToGround;
     private bool left = false, isGrounded = true, jumping;
     private Rigidbody rb;
     private Animator playerAnimator;
+    private AnimatorStateInfo playerpunchStateInfo, playerFallingInfo;
+
+    public PlayerInfo playerInfo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,12 +46,14 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat("Speed", Mathf.Abs(moveInput)*speed);
 
 
-
+        //Salto sensible
         if(Input.GetButtonDown("Jump") == true && IsGrounded())
         {
+            isGrounded = false;
             rb.AddForce(this.transform.up * maxJump);
             jumping = true;
             jumpTimeCounter = jumpTime;
+            playerAnimator.SetTrigger("Jump");
         }
         if (Input.GetButtonUp("Jump") == true)
         {
@@ -57,6 +65,7 @@ public class PlayerController : MonoBehaviour
             //Sensibility Jump
             if (jumpTimeCounter > 0)
             {
+                Debug.Log("Adding force to jump");
                 rb.AddForce(this.transform.up * maxJump);
                 jumpTimeCounter = jumpTimeCounter - Time.deltaTime;
             }
@@ -67,10 +76,53 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        playerAnimator.SetFloat("FallingSpeed", rb.velocity.y);
+        playerAnimator.SetBool("IsGrounded", IsGrounded());
+
+        playerFallingInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
+
+        if (!IsGrounded())
+            isGrounded = false;
+
+        if (IsGrounded() && !isGrounded)
+        {
+            isGrounded = true;
+        }
+        //Fin salto
+
+        playerpunchStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(1);
+        if (Input.GetKeyDown(KeyCode.Q) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch"))
+        {
+            Debug.Log("Normal punch");
+            playerAnimator.SetTrigger("NormalPunch");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch"))
+        {
+            Debug.Log("Wide punch");
+            playerAnimator.SetTrigger("WidePunch");
+        }
+
+
     }
 
-    private bool IsGrounded()
+    private void OnDrawGizmos() //Para revisar el suelo
     {
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        Gizmos.DrawSphere(transform.position, sphereDetection);
     }
+
+    private bool IsGrounded() 
+    {
+
+        return Physics.CheckSphere(transform.position, sphereDetection, groundLayer);
+    }
+
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.tag == "CommonBear")
+    //    {
+    //        Debug.Log("Oso golpeado");
+    //    }
+    //}
 }
