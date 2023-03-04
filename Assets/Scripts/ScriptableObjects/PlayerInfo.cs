@@ -8,6 +8,8 @@ public class PlayerInfo : ScriptableObject
     //Puntos base
     public int totalLifePoints;
     public int totalAbilityPoints;
+    public int normalPunchDamage;
+
 
     //Mejoras recolectadas 
     public int lifePointsCollected;
@@ -15,6 +17,9 @@ public class PlayerInfo : ScriptableObject
     public int leafFragments;
 
     public bool doubleJump;
+
+    public bool widePunch;
+    public int widePunchDamage;
 
 
 }

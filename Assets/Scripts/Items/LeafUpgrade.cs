@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class LeafUpgrade : MonoBehaviour
 {
-    public PlayerInfo playerInfo;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject particleGetPrefab;
+    public GameEvent leafUpgradeEvent;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Player"))
         {
-            playerInfo.leafFragments++;
-            //Aquí llamo al evento de recogida de fragmento de hoja 
-            //Se revisa cuántos fragmentos tiene
+            
+            //Particles (Destruir o reusarlas?)
+            Destroy(Instantiate(particleGetPrefab, other.transform.position, Quaternion.identity), 1.5f);
+            leafUpgradeEvent.Rise();
+            //Se podria reutilizar
+            //Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
+    }
+
+    public void ActivateLeaf()
+    {
+        this.gameObject.SetActive(true);
     }
 }

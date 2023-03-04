@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Animator playerAnimator;
     private AnimatorStateInfo playerpunchStateInfo, playerFallingInfo;
+    private Vector3 jumpVector;
 
     public PlayerInfo playerInfo;
 
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxis("Horizontal");
         if(moveInput < 0 && !left)  //Orientacion
         {
+
             this.transform.rotation = Quaternion.Euler(0, 270, 0);
             left = true;
         }else if(moveInput > 0 && left)
@@ -39,10 +41,10 @@ public class PlayerController : MonoBehaviour
             this.transform.rotation = Quaternion.Euler(0, 90, 0);
             left = false;
         }
-        
+
         //Debug.Log("Velocidad: " + moveInput);
         //Avance hacia adelante y animación
-        rb.AddForce(Mathf.Abs(moveInput) * this.transform.forward * speed);
+        //rb.AddForce(Mathf.Abs(moveInput) * this.transform.forward * speed);
         playerAnimator.SetFloat("Speed", Mathf.Abs(moveInput)*speed);
 
 
@@ -50,7 +52,8 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") == true && IsGrounded())
         {
             isGrounded = false;
-            rb.AddForce(this.transform.up * maxJump);
+            //jumpVector = transform.up * maxJump;
+            rb.AddForce(this.transform.up * maxJump * Time.deltaTime);
             jumping = true;
             jumpTimeCounter = jumpTime;
             playerAnimator.SetTrigger("Jump");
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
             if (jumpTimeCounter > 0)
             {
                 Debug.Log("Adding force to jump");
-                rb.AddForce(this.transform.up * maxJump);
+                rb.AddForce(this.transform.up * maxJump * Time.deltaTime);
                 jumpTimeCounter = jumpTimeCounter - Time.deltaTime;
             }
             else
@@ -106,6 +109,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        rb.AddForce(Mathf.Abs(moveInput) * this.transform.forward * speed);
+
+    }
     private void OnDrawGizmos() //Para revisar el suelo
     {
         Gizmos.DrawSphere(transform.position, sphereDetection);
@@ -118,11 +126,8 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.tag == "CommonBear")
-    //    {
-    //        Debug.Log("Oso golpeado");
-    //    }
-    //}
+    public void AddLeafPower()
+    {
+        playerInfo.leafFragments++;
+    }
 }
