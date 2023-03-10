@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float sphereDetection;
     public LayerMask groundLayer;
     private float moveInput, jumpTimeCounter, distToGround;
-    private bool left = false, isGrounded = true, jumping;
+    private bool left = false, isGrounded = true, jumping, movementBlocker = false;
     private Rigidbody rb;
     private Animator playerAnimator;
     private AnimatorStateInfo playerpunchStateInfo, playerFallingInfo;
@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     {
         
         //Movimiento
-        moveInput = Input.GetAxis("Horizontal");
+        if(!movementBlocker)
+            moveInput = Input.GetAxis("Horizontal");
         if(moveInput < 0 && !left)  //Orientacion
         {
 
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Salto sensible
-        if(Input.GetButtonDown("Jump") == true && IsGrounded())
+        if(Input.GetButtonDown("Jump") == true && IsGrounded() && !movementBlocker)
         {
             isGrounded = false;
             //jumpVector = transform.up * maxJump;
@@ -63,12 +64,12 @@ public class PlayerController : MonoBehaviour
             jumping = false;
         }
 
-        if (Input.GetButton("Jump") && jumping == true)
+        if (Input.GetButton("Jump") && jumping == true && !movementBlocker)
         {
             //Sensibility Jump
             if (jumpTimeCounter > 0)
             {
-                Debug.Log("Adding force to jump");
+                //Debug.Log("Adding force to jump");
                 rb.AddForce(this.transform.up * maxJump * Time.deltaTime);
                 jumpTimeCounter = jumpTimeCounter - Time.deltaTime;
             }
@@ -94,13 +95,13 @@ public class PlayerController : MonoBehaviour
         //Fin salto
 
         playerpunchStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(1);
-        if (Input.GetKeyDown(KeyCode.Q) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch"))
+        if (Input.GetKeyDown(KeyCode.Q) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker)
         {
             Debug.Log("Normal punch");
             playerAnimator.SetTrigger("NormalPunch");
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch"))
+        if (Input.GetKeyDown(KeyCode.E) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker)
         {
             Debug.Log("Wide punch");
             playerAnimator.SetTrigger("WidePunch");
@@ -128,6 +129,24 @@ public class PlayerController : MonoBehaviour
 
     public void AddLeafPower()
     {
+        BlockMovement();
         playerInfo.leafFragments++;
+        playerAnimator.SetTrigger("Upgrading");
+        
     }
+
+    public void BlockMovement()
+    {
+        moveInput = 0;
+        movementBlocker = true;
+    }
+
+    public void UnBlockMovement()
+    {
+        movementBlocker = false;
+        playerAnimator.SetTrigger("FinishUpgrade");
+        Debug.Log("Terminó la mejora");
+    }
+
+
 }

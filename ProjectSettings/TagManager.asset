@@ -7,6 +7,9 @@ TagManager:
   - SimplePunch
   - WidePunch
   - CommonBear
+  - EnemyAttack
+  - EnemyZone
+  - Enemy
   layers:
   - Default
   - TransparentFX
