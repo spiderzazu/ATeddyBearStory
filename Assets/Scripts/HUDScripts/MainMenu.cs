@@ -5,16 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject mainCanvas, aboutCanvas, SlotCanvas;
-    // Start is called before the first frame update
-    void Start()
+    public GameObject mainCanvas, aboutCanvas, slotCanvas;
+    public PlayerInfo[] slotInfo;
+
+    public void Jugar()
     {
-        
+        SceneManager.LoadScene("Lvl0");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Slots()
     {
-        
+        mainCanvas.SetActive(false);
+        slotCanvas.SetActive(true);
+    }
+
+    public void About()
+    {
+        aboutCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
+    }
+
+    public void Back()
+    {
+        aboutCanvas.SetActive(false);
+        slotCanvas.SetActive(false);
+        mainCanvas.SetActive(true);
+    }
+
+    public void Salir()
+    {
+        Application.Quit();
     }
 }

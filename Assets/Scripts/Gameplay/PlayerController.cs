@@ -112,8 +112,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(Mathf.Abs(moveInput) * this.transform.forward * speed);
-
+        //rb.AddForce(Mathf.Abs(moveInput) * this.transform.forward * speed);
+        rb.velocity = (Mathf.Abs(moveInput) * this.transform.forward * speed) + (rb.velocity.y * Vector3.up);
     }
     private void OnDrawGizmos() //Para revisar el suelo
     {
@@ -122,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded() 
     {
-
         return Physics.CheckSphere(transform.position, sphereDetection, groundLayer);
     }
 

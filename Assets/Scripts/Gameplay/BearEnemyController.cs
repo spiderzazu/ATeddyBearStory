@@ -24,13 +24,8 @@ public class BearEnemyController : MonoBehaviour
         enemyAnimator.SetTrigger("Punch1");
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    Debug.Log("Golpeado por: " + other);
-    //}
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("Ahm?? " + collision.gameObject.name);
-    //}
+    public void Damage(int damage)
+    {
+        Debug.Log("Enemigo herido con " + damage + " puntos de daño");
+    }
 }

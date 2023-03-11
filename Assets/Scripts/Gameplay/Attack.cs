@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public GameObject attackCollider;
+    public string tagObjective;
     public int damage;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,11 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Enemy"))
+        if (other.transform.CompareTag(tagObjective))
+        {
             Debug.Log("El tag es: " + other.transform.tag);
+            other.gameObject.SendMessage("Damage", damage);
+        }
+            
     }
 }
