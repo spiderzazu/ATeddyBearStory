@@ -20,6 +20,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("El tag es: " + other.transform.tag);
+        if (other.transform.CompareTag("Enemy"))
+            Debug.Log("El tag es: " + other.transform.tag);
     }
 }
