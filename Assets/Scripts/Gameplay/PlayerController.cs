@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 1, jumpTime, maxJump = 1;
     public float sphereDetection;
     public LayerMask groundLayer;
+    public GameObject wideAttackPoint, simpleAttackPoint;
+    public GameEvent widePunchEvent, normalPunchEvent, playerDamageEvent, gameOverEvent;
+    public BearEnemyData enemyData;
+
+    private Animator wideAnim, simpleAnim;
+
     private float moveInput, jumpTimeCounter, distToGround;
     private bool left = false, isGrounded = true, jumping, movementBlocker = false;
     private Rigidbody rb;
@@ -15,7 +21,8 @@ public class PlayerController : MonoBehaviour
     private AnimatorStateInfo playerpunchStateInfo, playerFallingInfo;
     private Vector3 jumpVector;
 
-    public PlayerInfo playerInfo;
+    public SelectedSave selectedSave;
+    private PlayerInfo playerInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +30,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         distToGround = this.GetComponent<CapsuleCollider>().bounds.extents.y;
+        wideAnim = wideAttackPoint.GetComponent<Animator>();
+        simpleAnim = simpleAttackPoint.GetComponent<Animator>();
+        movementBlocker = false;
+        SetSaveData();
     }
 
     // Update is called once per frame
@@ -97,14 +108,20 @@ public class PlayerController : MonoBehaviour
         playerpunchStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(1);
         if (Input.GetKeyDown(KeyCode.Q) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker)
         {
-            Debug.Log("Normal punch");
+            //Debug.Log("Normal punch");
             playerAnimator.SetTrigger("NormalPunch");
+            normalPunchEvent.Rise();
+            simpleAttackPoint.SetActive(true);
+            simpleAnim.SetTrigger("NormalAttack");
         }
 
         if (Input.GetKeyDown(KeyCode.E) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker)
         {
-            Debug.Log("Wide punch");
+            //Debug.Log("Wide punch");
             playerAnimator.SetTrigger("WidePunch");
+            widePunchEvent.Rise();
+            wideAttackPoint.SetActive(true);
+            wideAnim.SetTrigger("WideAttack");
         }
 
 
@@ -130,8 +147,17 @@ public class PlayerController : MonoBehaviour
     {
         BlockMovement();
         playerInfo.leafFragments++;
+        playerInfo.abilityLeafs++;
         playerAnimator.SetTrigger("Upgrading");
-        
+    }
+
+    public void AddLifePoint()
+    {
+        BlockMovement();
+        playerInfo.lifePointsCollected++;
+        playerInfo.totalLifePoints++;
+        playerInfo.currentLifePoints++;
+        playerAnimator.SetTrigger("Upgrading");
     }
 
     public void BlockMovement()
@@ -147,5 +173,35 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Terminó la mejora");
     }
 
+    public void SetSaveData()
+    {
+        playerInfo = selectedSave.saveFiles[selectedSave.selection];
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        playerInfo.currentLifePoints = playerInfo.totalLifePoints;
+        BlockMovement();
+        gameOverEvent.Rise();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Recibir golpe
+        if (collision.gameObject.CompareTag("EnemyAttack"))
+        {
+            playerAnimator.SetTrigger("Reaction");
+            playerDamageEvent.Rise();
+            Debug.Log("Golpe de " + enemyData.damageInflicted + " puntos");
+            playerInfo.currentLifePoints -= enemyData.damageInflicted;
+            if(playerInfo.currentLifePoints <= 0)
+            {
+                GameOver();
+            }
+            //damage = playerDamage.widePunchDamage;
+            //Debug.Log("Daño = " + damage);
+        }
+    }
 
 }

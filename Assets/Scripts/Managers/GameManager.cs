@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentState = GameState.ON_START;
+        Time.timeScale = 1;
         EvaluateState();
     }
     public void EvaluateState()
@@ -39,6 +41,12 @@ public class GameManager : MonoBehaviour
         EvaluateState();
         Application.Quit();
     }
+    public void MainMenu()
+    {
+        currentState = GameState.GAME_OVER;
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
 
 public enum GameState

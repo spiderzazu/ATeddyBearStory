@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject mainCanvas, aboutCanvas, slotCanvas;
-    public PlayerInfo[] slotInfo;
+    public SelectedSave saveManager;
 
     public void Jugar()
     {
@@ -35,5 +35,15 @@ public class MainMenu : MonoBehaviour
     public void Salir()
     {
         Application.Quit();
+    }
+
+    public void SetSaveFile(int file)
+    {
+        saveManager.selection = file;
+    }
+
+    public void SetNewGame(bool set)
+    {
+        saveManager.newGame = set;
     }
 }
