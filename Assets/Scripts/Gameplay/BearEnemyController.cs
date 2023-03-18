@@ -47,7 +47,7 @@ public class BearEnemyController : MonoBehaviour
     {
         CancelInvoke("Patrol");
         enemyStateInfo = enemyAnimator.GetCurrentAnimatorStateInfo(0);
-        if (!enemyStateInfo.IsName("SlowPunch1"))
+        if (!enemyStateInfo.IsName("SlowPunch1") && gameObject.activeSelf)
             enemyAgent.SetDestination(player.transform.position);
     }
 
@@ -60,8 +60,8 @@ public class BearEnemyController : MonoBehaviour
     {
         Vector3 tempVec = transform.position;
         position = transform.position + new Vector3(Random.Range(-5, 5), 0f, 0f);
-        
-        enemyAgent.SetDestination(position);
+        if(gameObject.activeSelf)
+            enemyAgent.SetDestination(position);
         //if (tempVec.x < position.x)
         //    gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
         //else

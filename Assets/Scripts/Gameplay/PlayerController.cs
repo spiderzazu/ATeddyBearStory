@@ -123,7 +123,11 @@ public class PlayerController : MonoBehaviour
             wideAttackPoint.SetActive(true);
             wideAnim.SetTrigger("WideAttack");
         }
+        //Utilizar energía para recuperar puntos de vida
+        if (Input.GetKeyDown(KeyCode.R))
+        {
 
+        }
 
     }
 
