@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03a8207567f71e47ae76569832fea74, type: 3}
   m_Name: Save3
   m_EditorClassIdentifier: 
-  totalLifePoints: 4
+  totalLifePoints: 5
+  currentLifePoints: 5
   totalAbilityPoints: 3
+  currentAbilityPoints: 0
   normalPunchDamage: 2
-  lifePointsCollected: 0
-  abilityLeafs: 0
-  leafFragments: 0
+  lifePointsCollected: 1
+  abilityLeafs: 10
+  leafFragments: 10
   doubleJump: 0
   widePunch: 0
   widePunchDamage: 6
+  savePoint: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4b831e8251a3e479d192dc484b9df7, type: 3}
   m_Name: MainSaveManager
   m_EditorClassIdentifier: 
-  selection: 2
+  selection: 1
   newGame: 0
   saveFiles:
   - {fileID: 11400000, guid: acf16ec4f31ab914d9d36f343c414357, type: 2}

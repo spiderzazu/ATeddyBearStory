@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public GameObject mainMesh;
     public float speed = 1, jumpTime, maxJump = 1;
     public float sphereDetection;
     public LayerMask groundLayer;
     public GameObject wideAttackPoint, simpleAttackPoint;
-    public GameEvent widePunchEvent, normalPunchEvent, playerDamageEvent, gameOverEvent;
-    public BearEnemyData enemyData;
+    public GameEvent widePunchEvent, normalPunchEvent, playerDamageEvent, gameOverEvent, healEvent, newLeafEvent;
+    public BearEnemyData enemyData, lizardData;
 
+    private Material healMaterial;
     private Animator wideAnim, simpleAnim;
 
     private float moveInput, jumpTimeCounter, distToGround;
-    private bool left = false, isGrounded = true, jumping, movementBlocker = false;
+    private bool left = false, isGrounded = true, jumping, movementBlocker = false, inmune = false;
     private Rigidbody rb;
     private Animator playerAnimator;
     private AnimatorStateInfo playerpunchStateInfo, playerFallingInfo;
@@ -24,16 +25,35 @@ public class PlayerController : MonoBehaviour
     public SelectedSave selectedSave;
     private PlayerInfo playerInfo;
 
+    //private void Awake()
+    //{
+    //    mainMesh.GetComponent<SkinnedMeshRenderer>().material = new Material(mainMesh.GetComponent<SkinnedMeshRenderer>().material);
+    //    healMaterial = mainMesh.GetComponent<SkinnedMeshRenderer>().material;
+    //    rb = GetComponent<Rigidbody>();
+    //    playerAnimator = GetComponent<Animator>();
+    //    distToGround = this.GetComponent<CapsuleCollider>().bounds.extents.y;
+    //    wideAnim = wideAttackPoint.GetComponent<Animator>();
+    //    simpleAnim = simpleAttackPoint.GetComponent<Animator>();
+    //    movementBlocker = false;
+    //    inmune = false;
+    //    SetSaveData();
+    //    healMaterial.SetFloat("_SpeedAura", 0);
+    //}
+
     // Start is called before the first frame update
     void Start()
     {
+        mainMesh.GetComponent<SkinnedMeshRenderer>().material = new Material(mainMesh.GetComponent<SkinnedMeshRenderer>().material);
+        healMaterial = mainMesh.GetComponent<SkinnedMeshRenderer>().material;
         rb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         distToGround = this.GetComponent<CapsuleCollider>().bounds.extents.y;
         wideAnim = wideAttackPoint.GetComponent<Animator>();
         simpleAnim = simpleAttackPoint.GetComponent<Animator>();
         movementBlocker = false;
+        inmune = false;
         SetSaveData();
+        healMaterial.SetFloat("_SpeedAura", 0);
     }
 
     // Update is called once per frame
@@ -126,9 +146,26 @@ public class PlayerController : MonoBehaviour
         //Utilizar energía para recuperar puntos de vida
         if (Input.GetKeyDown(KeyCode.R))
         {
-
+            if(playerInfo.currentLifePoints < playerInfo.totalLifePoints)
+            {
+                if(playerInfo.currentAbilityPoints >= 2)
+                {
+                    healMaterial.SetFloat("_SpeedAura", 1.0f);
+                    StartCoroutine(FinishHealAura());
+                    playerInfo.currentAbilityPoints = playerInfo.currentAbilityPoints - 2;
+                    playerInfo.currentLifePoints++;
+                    healEvent.Rise();
+                }
+            }
+            
         }
 
+    }
+
+    IEnumerator FinishHealAura()
+    {
+        yield return new WaitForSeconds(1);
+        healMaterial.SetFloat("_SpeedAura", 0f);
     }
 
     private void FixedUpdate()
@@ -151,18 +188,25 @@ public class PlayerController : MonoBehaviour
     {
         BlockMovement();
         playerInfo.leafFragments++;
-        playerInfo.abilityLeafs++;
+        if(playerInfo.leafFragments >= 3 && playerInfo.totalAbilityPoints < 5)
+        {
+            playerInfo.totalAbilityPoints++;
+            playerInfo.currentAbilityPoints++;
+            playerInfo.leafFragments -= 3;
+            newLeafEvent.Rise();
+        }
+        
         playerAnimator.SetTrigger("Upgrading");
     }
 
-    public void AddLifePoint()
-    {
-        BlockMovement();
-        playerInfo.lifePointsCollected++;
-        playerInfo.totalLifePoints++;
-        playerInfo.currentLifePoints++;
-        playerAnimator.SetTrigger("Upgrading");
-    }
+    //public void AddLifePoint()
+    //{
+    //    BlockMovement();
+    //    playerInfo.lifePointsCollected++;
+    //    playerInfo.totalLifePoints++;
+    //    playerInfo.currentLifePoints++;
+    //    playerAnimator.SetTrigger("Upgrading");
+    //}
 
     public void BlockMovement()
     {
@@ -174,7 +218,7 @@ public class PlayerController : MonoBehaviour
     {
         movementBlocker = false;
         playerAnimator.SetTrigger("FinishUpgrade");
-        Debug.Log("Terminó la mejora");
+        //Debug.Log("Terminó la mejora");
     }
 
     public void SetSaveData()
@@ -190,16 +234,39 @@ public class PlayerController : MonoBehaviour
         gameOverEvent.Rise();
     }
 
+    IEnumerator StopImmunity()
+    {
+        yield return new WaitForSeconds(0.5f);
+        inmune = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         //Recibir golpe
-        if (collision.gameObject.CompareTag("EnemyAttack"))
+        if (collision.gameObject.CompareTag("EnemyAttack") && !inmune)
         {
             playerAnimator.SetTrigger("Reaction");
-            playerDamageEvent.Rise();
-            Debug.Log("Golpe de " + enemyData.damageInflicted + " puntos");
+            //Debug.Log("Golpe de " + enemyData.damageInflicted + " puntos");
             playerInfo.currentLifePoints -= enemyData.damageInflicted;
+            playerDamageEvent.Rise();
+            inmune = true;
+            StartCoroutine(StopImmunity());
             if(playerInfo.currentLifePoints <= 0)
+            {
+                GameOver();
+            }
+            //damage = playerDamage.widePunchDamage;
+            //Debug.Log("Daño = " + damage);
+        }
+        if (collision.gameObject.CompareTag("Rock") && !inmune)
+        {
+            playerAnimator.SetTrigger("Reaction");
+            //Debug.Log("Golpe de " + lizardData.damageInflicted + " puntos");
+            playerInfo.currentLifePoints -= lizardData.damageInflicted;
+            playerDamageEvent.Rise();
+            inmune = true;
+            StartCoroutine(StopImmunity());
+            if (playerInfo.currentLifePoints <= 0)
             {
                 GameOver();
             }

@@ -7,6 +7,15 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainCanvas, aboutCanvas, slotCanvas;
     public SelectedSave saveManager;
+    public PlayerInfo defaultSave;
+
+    private void Start()
+    {
+        SetSavedData();
+        mainCanvas.SetActive(true);
+        aboutCanvas.SetActive(false);
+        slotCanvas.SetActive(false);
+    }
 
     public void Jugar()
     {
@@ -39,11 +48,32 @@ public class MainMenu : MonoBehaviour
 
     public void SetSaveFile(int file)
     {
+        if (saveManager.newGame)
+        {
+            NewGameFile(file);
+        }
         saveManager.selection = file;
     }
 
     public void SetNewGame(bool set)
     {
         saveManager.newGame = set;
+    }
+
+    private void SetSavedData()
+    {
+
+    }
+
+    private void NewGameFile(int file)
+    {
+        PlayerInfo tempFile = saveManager.saveFiles[file];
+        tempFile.totalLifePoints = defaultSave.totalLifePoints;
+        tempFile.currentLifePoints = defaultSave.totalLifePoints;
+        tempFile.totalAbilityPoints = defaultSave.totalAbilityPoints;
+        tempFile.lifePointsCollected = defaultSave.lifePointsCollected;
+        tempFile.abilityLeafs = defaultSave.abilityLeafs;
+        tempFile.leafFragments = defaultSave.leafFragments;
+
     }
 }

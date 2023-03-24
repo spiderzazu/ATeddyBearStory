@@ -6,21 +6,27 @@ using UnityEngine.AI;
 public class BearEnemyController : MonoBehaviour
 {
     private int lifePoints, damage = 0;
+    private float timeToDie = 0.0f;
     private Animator enemyAnimator, bearAttackPointAnimator;
     private PlayerInfo playerDamage;
-    private bool blockActions = false;
+    private bool blockActions = false, inmune = false;
     private Vector3 position;
     private AnimatorStateInfo enemyStateInfo;
+    private Material destroyMaterial;
 
+    public GameObject mainMesh;
     public NavMeshAgent enemyAgent;
     public SelectedSave saveInfo;
-    public GameEvent bearAttackEvent, bearDyingEvent;
+    public GameEvent bearAttackEvent, bearDyingEvent, playerGotEnergyEvent;
     public GameObject bearAttackPoint;
     public BearEnemyData enemyData;
 
     // Start is called before the first frame update
     void Start()
     {
+        timeToDie = 0.0f;
+        mainMesh.GetComponent<SkinnedMeshRenderer>().material = new Material(mainMesh.GetComponent<SkinnedMeshRenderer>().material);
+        destroyMaterial = mainMesh.GetComponent<SkinnedMeshRenderer>().material;
         enemyAnimator = GetComponent<Animator>();
         playerDamage = saveInfo.saveFiles[saveInfo.selection];
         bearAttackPointAnimator = bearAttackPoint.GetComponent<Animator>();
@@ -28,20 +34,20 @@ public class BearEnemyController : MonoBehaviour
         Patrol();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        enemyAnimator.SetFloat("Speed", enemyAgent.velocity.sqrMagnitude);
-        //AttackTest
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            //Attack();
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            Patrol();
-        }
-    }
+    // Bear testing
+    //void Update()
+    //{
+    //    //enemyAnimator.SetFloat("Speed", enemyAgent.velocity.sqrMagnitude);
+    //    ////AttackTest
+    //    //if (Input.GetKeyDown(KeyCode.T))
+    //    //{
+    //    //    //Attack();
+    //    //}
+    //    //if (Input.GetKeyDown(KeyCode.Y))
+    //    //{
+    //    //    Patrol();
+    //    //}
+    //}
 
     public void Chase(GameObject player)
     {
@@ -58,7 +64,6 @@ public class BearEnemyController : MonoBehaviour
 
     public void PatrolDestiny()
     {
-        Vector3 tempVec = transform.position;
         position = transform.position + new Vector3(Random.Range(-5, 5), 0f, 0f);
         if(gameObject.activeSelf)
             enemyAgent.SetDestination(position);
@@ -81,42 +86,74 @@ public class BearEnemyController : MonoBehaviour
         }
     }
 
-    public void Dying()
+    IEnumerator FakeDead()
     {
-
-        blockActions = true;
-        //Activar el shader de derretir
-        //Con Invoke llamar a disable
-        Invoke("DisableBear", 2f);
-        Debug.Log("Kumaaaa");
-        CancelInvoke("Patrol");
-        bearDyingEvent.Rise();
+        StartCoroutine(MaterialDestroy());
+        yield return new WaitForSeconds(2.0f);
+        blockActions = false;
+        inmune = false;
+        lifePoints = enemyData.initialLifePoints;
+        destroyMaterial.SetFloat("_DissolveRate", 0.0f);
+        gameObject.SetActive(false);
     }
 
-    public void DisableBear()
+    IEnumerator MaterialDestroy()
     {
-        blockActions = false;
-        lifePoints = enemyData.initialLifePoints;
-        gameObject.SetActive(false);
+        timeToDie += 0.05f;
+        destroyMaterial.SetFloat("_DissolveRate", timeToDie);
+        if (timeToDie < 1)
+        {
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(MaterialDestroy());
+        }
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    IEnumerator TerminaInmunidad()
+    {
+        yield return new WaitForSeconds(0.5f);
+        inmune = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("WidePunch") && !blockActions)
+        if (collision.gameObject.CompareTag("WidePunch") && !blockActions && !inmune)
         {
             damage = playerDamage.widePunchDamage;
+            if(playerDamage.totalAbilityPoints > playerDamage.currentAbilityPoints)
+            {
+                playerDamage.currentAbilityPoints++;
+                playerGotEnergyEvent.Rise();
+            }
             lifePoints = lifePoints - damage;
             enemyAnimator.SetTrigger("Reaction");
+            inmune = true;
+            StartCoroutine(TerminaInmunidad());
         }
-        else if (collision.gameObject.CompareTag("SimplePunch") && !blockActions)
+        else if (collision.gameObject.CompareTag("SimplePunch") && !blockActions && !inmune)
         {
             damage = playerDamage.normalPunchDamage;
+            if (playerDamage.totalAbilityPoints > playerDamage.currentAbilityPoints)
+            {
+                playerDamage.currentAbilityPoints++;
+                playerGotEnergyEvent.Rise();
+            }
+                
             lifePoints = lifePoints - damage;
             enemyAnimator.SetTrigger("Reaction");
+            inmune = true;
+            StartCoroutine(TerminaInmunidad());
         }
         if(lifePoints <= 0)
         {
-            Dying();
+            blockActions = true;
+            bearDyingEvent.Rise();
+            StartCoroutine(FakeDead());
         }
+    }
+
+    public void PlayerSaved()
+    {
+        gameObject.SetActive(true);
     }
 }

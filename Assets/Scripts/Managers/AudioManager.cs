@@ -28,36 +28,13 @@ public class AudioManager : MonoBehaviour
     public void PlayUI(int tipo)
     {
         uiSource.Pause();
-        switch (tipo)
-        {
-            case 0:
-                uiSource.clip = uiCollection[0];
-                break;
-            case 1:
-                uiSource.clip = uiCollection[1];
-                break;
-            case 2:
-                uiSource.clip = uiCollection[2];
-                break;
-
-        }
+        uiSource.clip = uiCollection[tipo];
         uiSource.Play();
     }
 
     public void PlaySFX(int tipo)
     {
-        switch (tipo)
-        {
-            case 0:
-                SFX.PlayOneShot(sfxCollection[0]);
-                break;
-            case 1:
-                SFX.PlayOneShot(sfxCollection[1]);
-                break;
-            case 2:
-                SFX.PlayOneShot(sfxCollection[2]);
-                break;
-        }
+        SFX.PlayOneShot(sfxCollection[tipo]);
     }
 
     public void PlayMusic(int musicClip)
@@ -73,22 +50,4 @@ public class AudioManager : MonoBehaviour
         mixer.SetFloat("VolSFX", sliderVolSFX.value);
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    //if (Input.GetKeyDown(KeyCode.Z))
-    //    //{
-    //    //    musica.Play();
-    //    //}
-    //    //if (Input.GetKeyDown(KeyCode.X))
-    //    //{
-    //    //    musica.Pause();
-    //    //}
-    //    //if (Input.GetKeyDown(KeyCode.C))
-    //    //{
-    //    //    musica.UnPause();
-    //    //}
-
-        
-    //}
 }
