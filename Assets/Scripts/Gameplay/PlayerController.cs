@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         //Fin salto
 
         playerpunchStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(1);
-        if (Input.GetKeyDown(KeyCode.Q) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker)
+        if (Input.GetMouseButtonDown(0) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker && Time.timeScale != 0)
         {
             //Debug.Log("Normal punch");
             playerAnimator.SetTrigger("NormalPunch");
@@ -134,8 +134,8 @@ public class PlayerController : MonoBehaviour
             simpleAttackPoint.SetActive(true);
             simpleAnim.SetTrigger("NormalAttack");
         }
-
-        if (Input.GetKeyDown(KeyCode.E) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker)
+        
+        if (Input.GetMouseButtonDown(1) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker && Time.timeScale != 0)
         {
             //Debug.Log("Wide punch");
             playerAnimator.SetTrigger("WidePunch");
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
             wideAnim.SetTrigger("WideAttack");
         }
         //Utilizar energía para recuperar puntos de vida
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0)
         {
             if(playerInfo.currentLifePoints < playerInfo.totalLifePoints)
             {

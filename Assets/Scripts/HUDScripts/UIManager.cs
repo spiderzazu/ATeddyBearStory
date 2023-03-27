@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class UIManager : MonoBehaviour
 
     public SelectedSave saveData;
     private PlayerInfo playerData;
+    private string archivoGuardado;
+    private SaveJ actualSave = new SaveJ();
+
+    private void Awake()
+    {
+        archivoGuardado = Application.dataPath + "/saveFile"+ saveData.selection.ToString() +".json";
+    }
 
     public void Start()
     {
@@ -77,8 +85,18 @@ public class UIManager : MonoBehaviour
         {
             //Guardar en documento bla bla
             playerData.savePoint = 1;
+            SaveJ newSave = new SaveJ()
+            {
+                life = playerData.totalLifePoints,
+                ability = playerData.totalAbilityPoints,
+                fragments = playerData.leafFragments,
+                position = playerData.savePoint
+            };
 
-            
+            string cadenaJson = JsonUtility.ToJson(newSave);
+            File.WriteAllText(archivoGuardado, cadenaJson);
+            Debug.Log("Guardado?");
+
         }
         else
         {

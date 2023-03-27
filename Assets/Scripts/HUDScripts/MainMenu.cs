@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.IO;
 
 public class MainMenu : MonoBehaviour
 {
@@ -14,8 +15,30 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI[] fragmentos;
     public TextMeshProUGUI[] savePoints;
 
+    private string[] archivoGuardado;
+    private SaveJ tmpSaveFile = new SaveJ();
+    private SaveJ save = new SaveJ();
+
+    private void Awake()
+    {
+        archivoGuardado = new string[] { Application.dataPath + "/saveFile0.json", Application.dataPath + "/saveFile1.json", Application.dataPath + "/saveFile2.json" };
+        for (int i = 0; i < 3; i++)
+        {
+            if (File.Exists(archivoGuardado[i]))
+            {
+                string contenido = File.ReadAllText(archivoGuardado[i]);
+                tmpSaveFile = JsonUtility.FromJson<SaveJ>(contenido);
+                saveManager.saveFiles[i].totalLifePoints = tmpSaveFile.life;
+                saveManager.saveFiles[i].totalAbilityPoints = tmpSaveFile.ability;
+                saveManager.saveFiles[i].leafFragments = tmpSaveFile.fragments;
+                saveManager.saveFiles[i].savePoint = tmpSaveFile.position;
+            }
+        }
+    }
+
     private void Start()
     {
+        Time.timeScale = 1;
         SetSavedData();
         CleanHUD();
         mainCanvas.SetActive(true);
@@ -102,13 +125,26 @@ public class MainMenu : MonoBehaviour
 
     private void NewGameFile(int file)
     {
+        //Guardar nueva partida
+        SaveJ newSave = new SaveJ()
+        {
+            life = defaultSave.totalLifePoints,
+            ability = defaultSave.totalAbilityPoints,
+            fragments = defaultSave.leafFragments,
+            position = defaultSave.savePoint
+        };
+        string cadenaJSON = JsonUtility.ToJson(newSave);
+        File.WriteAllText(archivoGuardado[file], cadenaJSON);
+
         PlayerInfo tempFile = saveManager.saveFiles[file];
         tempFile.totalLifePoints = defaultSave.totalLifePoints;
         tempFile.currentLifePoints = defaultSave.totalLifePoints;
         tempFile.totalAbilityPoints = defaultSave.totalAbilityPoints;
+        tempFile.currentAbilityPoints = 1;
         tempFile.lifePointsCollected = defaultSave.lifePointsCollected;
         tempFile.abilityLeafs = defaultSave.abilityLeafs;
         tempFile.leafFragments = defaultSave.leafFragments;
+        tempFile.savePoint = defaultSave.savePoint;
 
     }
 }
