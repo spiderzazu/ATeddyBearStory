@@ -104,7 +104,7 @@ public class BearEnemyController : MonoBehaviour
         if (timeToDie < 1)
         {
             yield return new WaitForSeconds(0.2f);
-            StartCoroutine(MaterialDestroy());
+            yield return MaterialDestroy();
         }
         yield return new WaitForSeconds(0.1f);
     }
@@ -144,7 +144,15 @@ public class BearEnemyController : MonoBehaviour
             inmune = true;
             StartCoroutine(TerminaInmunidad());
         }
-        if(lifePoints <= 0)
+        else if (collision.gameObject.CompareTag("FireBall") && !blockActions && !inmune)
+        {
+            damage = playerDamage.fireBallDamage;
+            lifePoints = lifePoints - damage;
+            enemyAnimator.SetTrigger("Reaction");
+            inmune = true;
+            StartCoroutine(TerminaInmunidad());
+        }
+        if (lifePoints <= 0)
         {
             blockActions = true;
             bearDyingEvent.Rise();

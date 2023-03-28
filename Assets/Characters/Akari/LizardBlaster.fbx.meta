@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: 5f97795e190fc7c4ba440cb2fd5deb44
+guid: 5c360f8e55830a242bbfe4958b701ad4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #2
-    second: {fileID: 2100000, guid: fd3778648f4473e4ea96d2670922b7dd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #3
-    second: {fileID: 2100000, guid: 606cbff48628e524eb4a3c18affaaa09, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -45,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.0032
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -85,8 +75,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 100d22075dd92c34883fc1f7ee4a36da
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -99,7 +88,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.000032
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

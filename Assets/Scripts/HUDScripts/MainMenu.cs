@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
         archivoGuardado = new string[] { Application.dataPath + "/saveFile0.json", Application.dataPath + "/saveFile1.json", Application.dataPath + "/saveFile2.json" };
         for (int i = 0; i < 3; i++)
         {
+            saveManager.saveFiles[i].widePunch = true;
             if (File.Exists(archivoGuardado[i]))
             {
                 string contenido = File.ReadAllText(archivoGuardado[i]);
@@ -44,6 +45,14 @@ public class MainMenu : MonoBehaviour
         mainCanvas.SetActive(true);
     }
 
+    public void ActivateBearFire(bool activateBearFire)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            saveManager.saveFiles[i].widePunch = !activateBearFire;
+        }
+    }
+
     public void CleanHUD()
     {
         mainCanvas.SetActive(false);
@@ -54,6 +63,8 @@ public class MainMenu : MonoBehaviour
 
     public void Jugar()
     {
+        saveManager.saveFiles[saveManager.selection].currentLifePoints = saveManager.saveFiles[saveManager.selection].totalLifePoints;
+        saveManager.saveFiles[saveManager.selection].currentAbilityPoints = saveManager.saveFiles[saveManager.selection].totalAbilityPoints;
         SceneManager.LoadScene("Lvl0");
     }
 

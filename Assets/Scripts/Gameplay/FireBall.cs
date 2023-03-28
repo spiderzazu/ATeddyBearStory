@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rock : MonoBehaviour
+public class FireBall : MonoBehaviour
 {
-    public GameEvent rockHitEvent;
+    public GameEvent fireBallHitEvent;
 
     private void OnCollisionEnter(Collision collision)
     {
-        rockHitEvent.Rise();
-        //Debug.Log("Choque con: " + collision.gameObject.name);
+        fireBallHitEvent.Rise();
         Destroy(this.gameObject);
     }
 }

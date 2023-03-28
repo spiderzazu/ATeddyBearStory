@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - LizardBoss
   - Rock
+  - FireBall
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - PlayerAttackPoints
   - EnemyAttackPoints
   - Rock
-  - 
+  - FireBall
   - Ground
   - 
   - 

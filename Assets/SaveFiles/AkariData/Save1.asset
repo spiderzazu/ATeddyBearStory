@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalLifePoints: 5
   currentLifePoints: 5
-  totalAbilityPoints: 3
-  currentAbilityPoints: 1
+  totalAbilityPoints: 5
+  currentAbilityPoints: 0
   normalPunchDamage: 2
   lifePointsCollected: 1
-  abilityLeafs: 5
-  leafFragments: 5
+  abilityLeafs: 0
+  leafFragments: 0
   doubleJump: 0
   widePunch: 0
   widePunchDamage: 6
-  savePoint: 0
+  fireBallDamage: 8
+  savePoint: 1

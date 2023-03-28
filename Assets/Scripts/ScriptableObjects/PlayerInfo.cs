@@ -23,6 +23,7 @@ public class PlayerInfo : ScriptableObject
 
     public bool widePunch = false;
     public int widePunchDamage = 6;
+    public int fireBallDamage = 10;
 
     public int savePoint;
 

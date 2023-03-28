@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject mainMesh;
+    public GameObject mainMesh, bearCannon, fireBall, cannonRef;
     public float speed = 1, jumpTime, maxJump = 1;
-    public float sphereDetection;
+    public float sphereDetection, fireBallspeed = 1;
     public LayerMask groundLayer;
     public GameObject wideAttackPoint, simpleAttackPoint;
-    public GameEvent widePunchEvent, normalPunchEvent, playerDamageEvent, gameOverEvent, healEvent, newLeafEvent;
+    public GameEvent widePunchEvent, normalPunchEvent, playerDamageEvent, gameOverEvent, healEvent, newLeafEvent, bearFireEvent;
     public BearEnemyData enemyData, lizardData;
 
     private Material healMaterial;
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     private AnimatorStateInfo playerpunchStateInfo, playerFallingInfo;
     private Vector3 jumpVector;
+    private GameObject tmpFireBall;
 
     public SelectedSave selectedSave;
     private PlayerInfo playerInfo;
@@ -53,6 +54,10 @@ public class PlayerController : MonoBehaviour
         movementBlocker = false;
         inmune = false;
         SetSaveData();
+        if (!playerInfo.widePunch)
+            bearCannon.SetActive(true);
+        else
+            bearCannon.SetActive(false);
         healMaterial.SetFloat("_SpeedAura", 0);
     }
 
@@ -134,14 +139,26 @@ public class PlayerController : MonoBehaviour
             simpleAttackPoint.SetActive(true);
             simpleAnim.SetTrigger("NormalAttack");
         }
-        
-        if (Input.GetMouseButtonDown(1) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch") && !movementBlocker && Time.timeScale != 0)
+
+        if (Input.GetMouseButtonDown(1) && !playerpunchStateInfo.IsName("WeakPunch") && !playerpunchStateInfo.IsName("WidePunch")
+                                        && !playerpunchStateInfo.IsName("Pointing") && !movementBlocker && Time.timeScale != 0)
         {
+            if (playerInfo.widePunch)
+            {
+                playerAnimator.SetTrigger("WidePunch");
+                widePunchEvent.Rise();
+                wideAttackPoint.SetActive(true);
+                wideAnim.SetTrigger("WideAttack");
+            }
+            else if(playerInfo.currentAbilityPoints >= 3)
+            {
+                playerInfo.currentAbilityPoints -= 3;
+                playerAnimator.SetTrigger("BearFire");
+                bearFireEvent.Rise();
+                bearFire();
+            }
             //Debug.Log("Wide punch");
-            playerAnimator.SetTrigger("WidePunch");
-            widePunchEvent.Rise();
-            wideAttackPoint.SetActive(true);
-            wideAnim.SetTrigger("WideAttack");
+            
         }
         //Utilizar energía para recuperar puntos de vida
         if (Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0)
@@ -160,6 +177,13 @@ public class PlayerController : MonoBehaviour
             
         }
 
+    }
+
+    public void bearFire()
+    {
+        Debug.Log("Rotacion: " + cannonRef.transform.rotation.y);
+        tmpFireBall = Instantiate(fireBall, cannonRef.transform.position, this.transform.rotation);
+        tmpFireBall.GetComponent<Rigidbody>().AddForce(cannonRef.transform.forward * fireBallspeed, ForceMode.Impulse);
     }
 
     IEnumerator FinishHealAura()

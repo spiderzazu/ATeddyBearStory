@@ -15,7 +15,7 @@ MonoBehaviour:
   totalLifePoints: 5
   currentLifePoints: 5
   totalAbilityPoints: 5
-  currentAbilityPoints: 5
+  currentAbilityPoints: 1
   normalPunchDamage: 2
   lifePointsCollected: 0
   abilityLeafs: 0
@@ -23,4 +23,5 @@ MonoBehaviour:
   doubleJump: 0
   widePunch: 0
   widePunchDamage: 6
+  fireBallDamage: 8
   savePoint: 1

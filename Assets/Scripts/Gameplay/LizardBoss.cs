@@ -25,7 +25,7 @@ public class LizardBoss : MonoBehaviour
     private PlayerInfo playerDamage;
     private int lifePoints;
     private bool blockActions = false, inmunidad = false;
-    private float timeToDie = 0.0f;
+    private static float timeToDie = 0.0f;
     private Animator lizardAnimator;
 
     // Start is called before the first frame update
@@ -107,7 +107,7 @@ public class LizardBoss : MonoBehaviour
         StopCoroutine(FightSequence());
         lizardAnimator.SetTrigger("Afk");
         StartCoroutine(MaterialDestroy());
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
         blockActions = false;
         inmunidad = false;
         timeToAttack = 5.0f;
@@ -125,10 +125,14 @@ public class LizardBoss : MonoBehaviour
         if (timeToDie < 1)
         {
             yield return new WaitForSeconds(0.2f);
-            StartCoroutine(MaterialDestroy());
+            yield return MaterialDestroy();
         }
-        yield return new WaitForSeconds(0.1f);
-        bossDefeatedEvent.Rise();
+        else
+        {
+            Debug.Log("Entra aquí?");
+            yield return new WaitForSeconds(0.5f);
+            bossDefeatedEvent.Rise();
+        }
     }
 
     IEnumerator TerminaInmunidad()
@@ -161,6 +165,13 @@ public class LizardBoss : MonoBehaviour
                 playerGotEnergyEvent.Rise();
             }
 
+            lifePoints = lifePoints - damage;
+            inmunidad = true;
+            StartCoroutine(TerminaInmunidad());
+        }
+        else if (collision.gameObject.CompareTag("FireBall") && !blockActions && !inmunidad)
+        {
+            damage = playerDamage.fireBallDamage;
             lifePoints = lifePoints - damage;
             inmunidad = true;
             StartCoroutine(TerminaInmunidad());

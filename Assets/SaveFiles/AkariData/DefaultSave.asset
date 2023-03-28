@@ -23,4 +23,5 @@ MonoBehaviour:
   doubleJump: 0
   widePunch: 0
   widePunchDamage: 6
+  fireBallDamage: 8
   savePoint: 0

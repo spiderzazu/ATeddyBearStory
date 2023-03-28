@@ -19,8 +19,9 @@ MonoBehaviour:
   normalPunchDamage: 2
   lifePointsCollected: 1
   abilityLeafs: 10
-  leafFragments: 10
+  leafFragments: 0
   doubleJump: 0
   widePunch: 0
   widePunchDamage: 6
+  fireBallDamage: 8
   savePoint: 0
