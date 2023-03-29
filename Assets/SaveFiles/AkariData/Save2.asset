@@ -15,11 +15,11 @@ MonoBehaviour:
   totalLifePoints: 5
   currentLifePoints: 5
   totalAbilityPoints: 5
-  currentAbilityPoints: 1
+  currentAbilityPoints: 3
   normalPunchDamage: 2
   lifePointsCollected: 0
   abilityLeafs: 0
-  leafFragments: 0
+  leafFragments: 1
   doubleJump: 0
   widePunch: 0
   widePunchDamage: 6
